@@ -2,7 +2,10 @@ import { Inngest } from "inngest";
 import { prisma } from "../configs/prisma.js";
 
 // Create a client to send and receive events
-export const inngest = new Inngest({ id: "project-management" });
+export const inngest = new Inngest({
+  id: "project-management",
+  env: process.env.INNGEST_ENV || (process.env.NODE_ENV === "production" ? "production" : undefined),
+});
 
 // inngest function to save user data to database
 const syncUserCreation = inngest.createFunction(
