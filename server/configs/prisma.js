@@ -21,4 +21,5 @@ const prisma = global.prisma || new PrismaClient({adapter})
 
 if(process.env.NODE_ENV === 'development') global.prisma = prisma;
 
-export default prisma
+export { prisma };
+export default prisma;
