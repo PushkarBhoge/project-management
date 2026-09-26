@@ -54,7 +54,7 @@ const syncUserUpdation = inngest.createFunction(
         id: user.id,
       },
       data: {
-        email: user?.email_addresses?.[0]?.email_address || user?.email_addresses?.[0]?.email_addres,
+        email: user?.email_addresses[0]?.email_address ,
         name: name || "User",
         image: user?.image_url,
       },
