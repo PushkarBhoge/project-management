@@ -1,4 +1,5 @@
 import prisma from "../configs/prisma.js";
+import { inngest } from "../inngest/index.js";
 
 
 // create task
@@ -7,7 +8,7 @@ export const createTask = async (req, res) => {
         const {userId} = await req.auth()
         const { projectId, title, description, type, status, priority, assigneeId, due_date } = req.body;
 
-        const orign = req.get('orign');
+        const origin = req.get('origin') || req.headers.origin || '';
 
         // check if user has admin role in project
         const project = await prisma.project.findUnique({
@@ -38,6 +39,15 @@ export const createTask = async (req, res) => {
         const taskWithAssignee = await prisma.task.findUnique({
             where: {id: task.id},
             include: {assignee: true}
+        })
+
+        await inngest.send({
+            name: "task/assigned",
+            data: { 
+                taskId: task.id, 
+                origin,
+                orign: origin
+            }
         })
 
         res.json({task: taskWithAssignee, message: 'Task created successfully'})

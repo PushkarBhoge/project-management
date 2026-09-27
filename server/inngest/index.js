@@ -182,10 +182,10 @@ const syncWorkspaceMemberCreation = inngest.createFunction(
 const sendTaskAssigmentEmail = inngest.createFunction(
   {
     id: "send-task-assignment-mail",
-    triggers: [{ event: "task/assigned" }],
+    triggers: [{ event: "task/assigned" }, { event: "app/task.assigned" }],
   },
   async ({ event, step }) => {
-    const { taskId, origin } = event.data;
+    const { taskId, origin, orign } = event.data;
 
     const task = await prisma.task.findUnique({
       where: { id: taskId },
@@ -212,8 +212,8 @@ const sendTaskAssigmentEmail = inngest.createFunction(
           : "#10b981";
 
     // Task link
-    const taskUrl = origin
-      ? `${origin}/projects/${task.projectId}/tasks/${task.id}`
+    const taskUrl = origin || orign
+      ? `${origin || orign}/projects/${task.projectId}/tasks/${task.id}`
       : "#";
 
     await sendEmail({
