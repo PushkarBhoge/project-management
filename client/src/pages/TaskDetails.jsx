@@ -2,15 +2,16 @@ import { format } from "date-fns";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { CalendarIcon, MessageCircle, PenIcon } from "lucide-react";
 import { assets } from "../assets/assets";
 
 const TaskDetails = () => {
 
     const [searchParams] = useSearchParams();
-    const projectId = searchParams.get("projectId");
-    const taskId = searchParams.get("taskId");
+    const params = useParams();
+    const projectId = params.projectId || searchParams.get("projectId");
+    const taskId = params.taskId || searchParams.get("taskId");
 
     const user = { id : 'user_1'}
     const [task, setTask] = useState(null);
@@ -27,12 +28,12 @@ const TaskDetails = () => {
 
     const fetchTaskDetails = async () => {
         setLoading(true);
-        if (!projectId || !taskId) return;
+        if (!projectId || !taskId || !currentWorkspace?.projects) return;
 
         const proj = currentWorkspace.projects.find((p) => p.id === projectId);
         if (!proj) return;
 
-        const tsk = proj.tasks.find((t) => t.id === taskId);
+        const tsk = proj.tasks?.find((t) => t.id === taskId);
         if (!tsk) return;
 
         setTask(tsk);
@@ -63,7 +64,7 @@ const TaskDetails = () => {
         }
     };
 
-    useEffect(() => { fetchTaskDetails(); }, [taskId]);
+    useEffect(() => { fetchTaskDetails(); }, [taskId, projectId, currentWorkspace]);
 
     useEffect(() => {
         if (taskId && task) {
