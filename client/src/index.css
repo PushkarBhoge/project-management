@@ -65,4 +65,44 @@
     input[type="checkbox"]:checked {
         background-color: #3b82f6;
     }
+
+    .dark {
+        color-scheme: dark;
+    }
+
+    select {
+        color-scheme: light;
+    }
+
+    .dark select {
+        color-scheme: dark;
+        background-color: #18181b;
+        color: #ffffff;
+    }
+
+    .dark select option {
+        background-color: #18181b;
+        color: #ffffff;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee-inner {
+    animation: marqueeScroll 25s linear infinite;
+}
+
+.marquee-inner:hover {
+    animation-play-state: paused;
+}
+
+.marquee-reverse {
+    animation-direction: reverse;
 }
