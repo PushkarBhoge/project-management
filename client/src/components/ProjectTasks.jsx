@@ -130,9 +130,9 @@ const ProjectTasks = ({ tasks }) => {
                         ],
                     };
                     return (
-                        <select key={name} name={name} onChange={handleFilterChange} className=" border not-dark:bg-white border-zinc-300 dark:border-zinc-800 outline-none px-3 py-1 rounded text-sm text-zinc-900 dark:text-zinc-200" >
+                        <select key={name} name={name} onChange={handleFilterChange} className="border bg-white dark:bg-zinc-900 border-zinc-300 dark:border-zinc-800 outline-none px-3 py-1 rounded text-sm text-zinc-900 dark:text-zinc-200" >
                             {options[name].map((opt, idx) => (
-                                <option key={idx} value={opt.value}>{opt.label}</option>
+                                <option className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200" key={idx} value={opt.value}>{opt.label}</option>
                             ))}
                         </select>
                     );
@@ -195,10 +195,10 @@ const ProjectTasks = ({ tasks }) => {
                                                     </span>
                                                 </td>
                                                 <td onClick={e => e.stopPropagation()} className="px-4 py-2">
-                                                    <select name="status" onChange={(e) => handleStatusChange(task.id, e.target.value)} value={task.status} className="group-hover:ring ring-zinc-100 outline-none px-2 pr-4 py-1 rounded text-sm text-zinc-900 dark:text-zinc-200 cursor-pointer" >
-                                                        <option value="TODO">To Do</option>
-                                                        <option value="IN_PROGRESS">In Progress</option>
-                                                        <option value="DONE">Done</option>
+                                                    <select name="status" onChange={(e) => handleStatusChange(task.id, e.target.value)} value={task.status} className="bg-white dark:bg-zinc-900 group-hover:ring ring-zinc-100 dark:ring-zinc-800 outline-none px-2 pr-4 py-1 rounded text-sm text-zinc-900 dark:text-zinc-200 cursor-pointer" >
+                                                        <option className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200" value="TODO">To Do</option>
+                                                        <option className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200" value="IN_PROGRESS">In Progress</option>
+                                                        <option className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200" value="DONE">Done</option>
                                                     </select>
                                                 </td>
                                                 <td className="px-4 py-2">
@@ -255,9 +255,9 @@ const ProjectTasks = ({ tasks }) => {
                                         <div>
                                             <label className="text-zinc-600 dark:text-zinc-400 text-xs">Status</label>
                                             <select name="status" onChange={(e) => handleStatusChange(task.id, e.target.value)} value={task.status} className="w-full mt-1 bg-zinc-100 dark:bg-zinc-800 ring-1 ring-zinc-300 dark:ring-zinc-700 outline-none px-2 py-1 rounded text-sm text-zinc-900 dark:text-zinc-200" >
-                                                <option value="TODO">To Do</option>
-                                                <option value="IN_PROGRESS">In Progress</option>
-                                                <option value="DONE">Done</option>
+                                                <option className="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-200" value="TODO">To Do</option>
+                                                <option className="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-200" value="IN_PROGRESS">In Progress</option>
+                                                <option className="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-200" value="DONE">Done</option>
                                             </select>
                                         </div>
 

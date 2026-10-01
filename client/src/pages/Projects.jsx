@@ -66,19 +66,19 @@ export default function Projects() {
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-zinc-400 w-4 h-4" />
                     <input onChange={(e) => setSearchTerm(e.target.value)} value={searchTerm} className="w-full pl-10 text-sm pr-4 py-2 rounded-lg border border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-zinc-400 focus:border-blue-500 outline-none" placeholder="Search projects..." />
                 </div>
-                <select value={filters.status} onChange={(e) => setFilters({ ...filters, status: e.target.value })} className="px-3 py-2 rounded-lg border border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-white text-sm" >
-                    <option value="ALL">All Status</option>
-                    <option value="ACTIVE">Active</option>
-                    <option value="PLANNING">Planning</option>
-                    <option value="COMPLETED">Completed</option>
-                    <option value="ON_HOLD">On Hold</option>
-                    <option value="CANCELLED">Cancelled</option>
+                <select value={filters.status} onChange={(e) => setFilters({ ...filters, status: e.target.value })} className="px-3 py-2 rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white text-sm outline-none" >
+                    <option className="bg-white dark:bg-zinc-900 text-gray-900 dark:text-white" value="ALL">All Status</option>
+                    <option className="bg-white dark:bg-zinc-900 text-gray-900 dark:text-white" value="ACTIVE">Active</option>
+                    <option className="bg-white dark:bg-zinc-900 text-gray-900 dark:text-white" value="PLANNING">Planning</option>
+                    <option className="bg-white dark:bg-zinc-900 text-gray-900 dark:text-white" value="COMPLETED">Completed</option>
+                    <option className="bg-white dark:bg-zinc-900 text-gray-900 dark:text-white" value="ON_HOLD">On Hold</option>
+                    <option className="bg-white dark:bg-zinc-900 text-gray-900 dark:text-white" value="CANCELLED">Cancelled</option>
                 </select>
-                <select value={filters.priority} onChange={(e) => setFilters({ ...filters, priority: e.target.value })} className="px-3 py-2 rounded-lg border border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-white text-sm" >
-                    <option value="ALL">All Priority</option>
-                    <option value="HIGH">High</option>
-                    <option value="MEDIUM">Medium</option>
-                    <option value="LOW">Low</option>
+                <select value={filters.priority} onChange={(e) => setFilters({ ...filters, priority: e.target.value })} className="px-3 py-2 rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white text-sm outline-none" >
+                    <option className="bg-white dark:bg-zinc-900 text-gray-900 dark:text-white" value="ALL">All Priority</option>
+                    <option className="bg-white dark:bg-zinc-900 text-gray-900 dark:text-white" value="HIGH">High</option>
+                    <option className="bg-white dark:bg-zinc-900 text-gray-900 dark:text-white" value="MEDIUM">Medium</option>
+                    <option className="bg-white dark:bg-zinc-900 text-gray-900 dark:text-white" value="LOW">Low</option>
                 </select>
             </div>
 

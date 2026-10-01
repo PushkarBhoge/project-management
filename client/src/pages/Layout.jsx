@@ -5,8 +5,9 @@ import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadTheme } from '../features/themeSlice'
 import { Loader2Icon } from 'lucide-react'
-import { useUser, SignIn, useAuth, CreateOrganization } from '@clerk/clerk-react'
+import { useUser, useAuth, CreateOrganization } from '@clerk/clerk-react'
 import { fetchWorkspaces } from '../features/workspaceSlice'
+import LandingPage from './LandingPage'
 
 const Layout = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -27,12 +28,16 @@ const Layout = () => {
         }
     }, [user, isLoaded])
 
-    if(!user){
+    if (!isLoaded) {
         return (
-            <div className='flex justify-center items-center h-screen bg-white dark:bg-zinc-950'>
-                <SignIn/>
+            <div className='flex items-center justify-center h-screen bg-white dark:bg-zinc-950'>
+                <Loader2Icon className="size-7 text-blue-500 animate-spin" />
             </div>
         )
+    }
+
+    if(!user){
+        return <LandingPage />
     }
 
     if (loading) return (
