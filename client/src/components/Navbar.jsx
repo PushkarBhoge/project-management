@@ -4,6 +4,7 @@ import { toggleTheme } from '../features/themeSlice'
 import { MoonIcon, SunIcon } from 'lucide-react'
 import { assets } from '../assets/assets'
 import { UserButton } from '@clerk/clerk-react'
+import { dark } from '@clerk/themes'
 
 const Navbar = ({ setIsSidebarOpen }) => {
 
@@ -44,7 +45,16 @@ const Navbar = ({ setIsSidebarOpen }) => {
                     </button>
 
                     {/* User Button */}
-                    <UserButton />
+                    <UserButton
+                        appearance={{
+                            baseTheme: theme === 'dark' ? dark : undefined,
+                        }}
+                        userProfileProps={{
+                            appearance: {
+                                baseTheme: theme === 'dark' ? dark : undefined,
+                            },
+                        }}
+                    />
                 </div>
             </div>
         </div>

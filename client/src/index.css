@@ -106,3 +106,51 @@ html {
 .marquee-reverse {
     animation-direction: reverse;
 }
+
+/* Clerk Dark Mode Global Styles */
+.dark .cl-userButtonPopoverCard,
+.dark .cl-card,
+.dark .cl-modalContent,
+.dark .cl-userProfile-root {
+    background-color: #18181b !important;
+    border-color: #27272a !important;
+    color: #f4f4f5 !important;
+}
+
+.dark .cl-userButtonPopoverActionButton,
+.dark .cl-navbarButton {
+    color: #f4f4f5 !important;
+}
+
+.dark .cl-userButtonPopoverActionButton:hover,
+.dark .cl-navbarButton:hover {
+    background-color: #27272a !important;
+}
+
+.dark .cl-userButtonPopoverFooter,
+.dark .cl-navbar {
+    border-color: #27272a !important;
+    background-color: #18181b !important;
+}
+
+.dark .cl-profileSectionTitle,
+.dark .cl-headerTitle,
+.dark .cl-internal-phg8k6 {
+    color: #ffffff !important;
+}
+
+.dark .cl-profileSectionContent,
+.dark .cl-headerSubtitle,
+.dark .cl-userButtonPopoverActionButtonText {
+    color: #a1a1aa !important;
+}
+
+.dark .cl-modalCloseButton {
+    color: #a1a1aa !important;
+    border-color: #27272a !important;
+}
+
+.dark .cl-modalCloseButton:hover {
+    background-color: #27272a !important;
+    color: #ffffff !important;
+}
