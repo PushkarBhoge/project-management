@@ -48,7 +48,7 @@ const Layout = () => {
 
     if(user && workspaces.length === 0){
         return (
-            <div className='min-h-screen flex justify-center items-center'>
+            <div className='min-h-screen flex justify-center items-center bg-white dark:bg-zinc-950'>
                 <CreateOrganization/>
             </div>
         )
