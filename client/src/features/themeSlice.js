@@ -1,12 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const savedTheme = typeof window !== 'undefined' ? localStorage.getItem("theme") : null;
-if (savedTheme === "dark" && typeof document !== 'undefined') {
-    document.documentElement.classList.add("dark");
-}
+const getInitialTheme = () => {
+    if (typeof window !== "undefined") {
+        const stored = localStorage.getItem("theme");
+        if (stored) {
+            if (stored === "dark") {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+            return stored;
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            document.documentElement.classList.add("dark");
+            return "dark";
+        }
+    }
+    return "light";
+};
 
 const initialState = {
-    theme: savedTheme || "light",
+    theme: getInitialTheme(),
 };
 
 const themeSlice = createSlice({
